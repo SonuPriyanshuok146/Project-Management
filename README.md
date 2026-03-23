@@ -55,6 +55,21 @@ The application follows the **MVC (Model-View-Controller) architecture**.
 | Environment Variables | dotenv |
 | API Testing | Postman |
 
+## Permission Matrix
+| Features | Admin | Project Admin | Member |
+|----------|-------------|-------------|-------------|
+| Created project | Yes | No | No |
+| Update/Delete Project | Yes | No | No |
+| Manage Project Member | Yes | No | No |
+| Create/Update/Delete Task | Yes | Yes | No |
+| View Tasks | Yes | Yes | Yes |
+| Update Subtask Status | Yes | Yes | Yes |
+| Create/Delete Subtasks | Yes | Yes | No |
+| Create/Update/Delete Notes | Yes | No | No |
+| View Notes | Yes | Yes | Yes |
+
+
+
 ---
 
 # 6. Key Features
@@ -187,6 +202,27 @@ POST /api/v1/auth/logout
 
 - **PUT** `/:projectId/st/:subTaskId`  
   Update subtask *(secured, role-based)*
+
+- **DELETE** `/:projectId/st/:subTaskId`  
+  Delete subtask *(secured, Admin/Project Admin)*
+
+---
+
+## Notes Routes (`/api/v1/notes/`)
+- **GET** `/:projectId`  
+  List project Notes *(secured, role-based)*
+
+- **POST** `/:projectId`  
+  Create Note *(secured, Admin only)*
+
+- **GET** `/:projectId/n/:noteId`  
+  Get note details *(secured, role-based)*
+
+- **PUT** `/:projectId/n/:noteId`  
+  Update note *(secured, Admin only)*
+
+- **DELETE** `/:projectId/n/:noteId`  
+  Delete note *(secured, Admin only)*
 
 ---
 
